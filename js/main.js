@@ -5,30 +5,43 @@ function myMenuFunction() {
   menuBtn.classList.toggle("responsive");
   
 }
-/* ----------------- NAVIGATION BAR FUNCTION------------------- */
-window.onscroll = function() {
-  headerShadow();
-};
+/*------scroll to top button------*/
+document.querySelectorAll('.nav-link').forEach(link => {
+  link.addEventListener('click', function(e) {
+      e.preventDefault(); // Prevent default jump behavior
+      
+      const targetId = this.getAttribute('href').substring(1); // Get the target section ID
+      const targetSection = document.getElementById(targetId); // Find the section
+      
+      if (targetSection) {
+          window.scrollTo({
+              top: targetSection.offsetTop - 50, // Adjust for header height
+              behavior: "smooth" // Enable smooth scrolling
+          });
+      }
+  });
+});
 
-window.onscroll = function() {
-  headerShadow();
-};
+/*-----HIGHLET EFFECT------*/
+const navLinks = document.querySelectorAll(".nav-link");
 
-function headerShadow() {
-  const navheader = document.querySelector(".header"); // Select header by class
+window.addEventListener("scroll", () => {
+    let currentSection = "";
 
-  if (!navheader) return; // Prevent errors if header is missing
+    document.querySelectorAll("section").forEach((section) => {
+        const sectionTop = section.offsetTop - 50; // Adjust for header height
+        if (window.scrollY >= sectionTop) {
+            currentSection = section.getAttribute("id");
+        }
+    });
 
-  if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-    navheader.style.boxShadow = "0 1px 6px rgba(0, 0, 0, 0.1)";
-    navheader.style.height = "70px";  // Increased height
-    navheader.style.lineHeight = "70px";
-  } else {
-    navheader.style.boxShadow = "none";
-    navheader.style.height = "90px";  // Increased height
-    navheader.style.lineHeight = "90px";
-  }
-}
+    navLinks.forEach((link) => {
+        link.classList.remove("active-link");
+        if (link.getAttribute("href").substring(1) === currentSection) {
+            link.classList.add("active-link");
+        }
+    });
+});
 
 /* ----- TYPING EFFECT ----- */
 var typingEffect = new Typed(".typeText",{
@@ -40,3 +53,50 @@ var typingEffect = new Typed(".typeText",{
     backSpeed : 100,
     backDelay : 2000
   })
+  /* ----- Tcontact fom ----- */
+  const form = document.getElementById('form');
+  const result = document.getElementById('result');
+  
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const formData = new FormData(form);
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+    result.innerHTML = "Please wait..."
+  
+      fetch('https://api.web3forms.com/submit', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+                  'Accept': 'application/json'
+              },
+              body: json
+          })
+          .then(async (response) => {
+              let json = await response.json();
+              if (response.status == 200) {
+                  result.innerHTML = Swal.fire({
+                      title: "Success!",
+                      text: "Massage sent Successfully!",
+                      icon: "success"
+                    });
+              } else {
+                  console.log(response);
+                  result.innerHTML = json.message;
+              }
+          })
+          .catch(error => {
+              console.log(error);
+              result.innerHTML = Swal.fire({
+                  icon: "error",
+                  title: "Oops...",
+                  text: "Something went wrong!"
+                });;
+          })
+          .then(function() {
+              form.reset();
+              setTimeout(() => {
+                  result.style.display = "none";
+              }, 3000);
+          });
+  });

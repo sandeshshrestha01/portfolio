@@ -9,6 +9,7 @@
 
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/thinline.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     
     <body>
     <header class="header">
@@ -23,7 +24,7 @@
                             <a href="#home" class="nav-link active-link">Home</a>
                         </li>
                         <li class="nav_list">
-                            <a href="#about" class="nav-link active-link">About</a>
+                            <a href="#about" class="nav-link">About</a>
                         </li>
                         <li class="nav_list">
                             <a href="#education" class="nav-link">Education</a>
@@ -107,12 +108,75 @@
             </div>
             </div>
         </section>
+        <!----    Education Section  ---->
+        <section class="section" id="education">
+            <div class="education-header">
+                <span class="subheading">Education</span>
+            </div>
+            <div class="education-container">
+                <div class="education-box">
+                    <i class ="uil uil-book-open"></i>
+                    <span class="date">2024</span>
+                    <h3>Higher Secondary Education</h3>
+                    <span class="position">BROOKLYN ACADEMY SECONDARY SCHOOL</span>
+                    <p class="gpa">G.P.A: 3.36</p>
+                </div>
+                <div class="education-box">
+                    <i class ="uil uil-book-open"></i>
+                    <span class="date">2022</span>
+                    <h3>Secondary Education</h3>
+                    <span class="position">Sagarmatha English Boarding school </span>
+                    <p class="gpa">G.P.A: 3.10</p>
+                </div>
+            </div>
+            </section>
+        <!----    Contact Section  ---->
+        <section class="section" id="contact">
+            <div class="contact-header">
+                <h2>Contact Me</h2>
+                <span>You mind contact me here.</span>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="contact-info">
+                        <h2>Find Me <i class="uil uil-corner-right-down"></i></h2>
+                        <p><i class="uil uil-envelope"></i> Email: sandeshcrest7@gmail.com</p>
+                        <p><i class="uil uil-phone"></i><a href="tel:+9779810393338" class="phone">Tel: +977 9810393338</a></p>
+                        <p><i class="uil uil-location-point"></i> Address: Siraha,Nepal</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-control">
+                        <form methord="POST" class="form-inputs" id="form">
+                            <input type="hidden" name="access_key" value="3a5101a2-bdaf-42de-8332-ef6448a2deb4">
+                            <input type="text" name="name" class ="input-field" placeholder="Name">
+                            <input type="text" name="email" class ="input-field" placeholder="Email">
+                            <input type="text"  name="phone no"class ="input-field" placeholder="Contact No">
+                            <div class="text-area">
+                                <textarea name="masssage"placeholder="Message"></textarea>
+                            </div>
+                            <div class="form-button">
+                                <button  type="submit"class="btn">Send <i class="uil uil-message"></i></button>
+                                <div id="result"></div>
+                            </div>
+                        </form>
+                    </div>
+            </div>
+        </section>
     </main>
+     <!--- Footer --->
+        <footer class="footer">
+            <div class="footer-text">
+                <p>Copyright &copy; <script>document.write(new Date().getFullYear());</script> Sandesh Shrestha  | Design<i class="fa fa-heart" aria-hidden="true"></i>
+                    by <a href="https://colorlib.com" target="_blank">Sandesh</a>-All right reserved</p>
+            </div>
+            </div>
 </body>
 <!-------- Typed JS LINK ------->
 <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-<!--------SCROLL REVEAL JS LINK ------->
-<script src="https://unpkg.com/scrollrevel"></script>
+
+ <!--- ---------contact function link-------- --->
+ <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"> </script>
 
 <script src="./js/main.js"></script>
 </html>
