@@ -47,7 +47,7 @@ window.addEventListener("scroll", () => {
 var typingEffect = new Typed(".typeText",{
     strings : [
       " Web Developer, " ," Deginer,  "
-      ," Hacker, " ," Programmer"],
+      ," Programmer"],
     loop : true,
     typeSpeed : 200, 
     backSpeed : 100,
